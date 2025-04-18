@@ -1,0 +1,27 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "Python 3",
+	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
+	"onCreateCommand": "pip3 install --upgrade pip && pip3 install --user -r requirements.txt",
+	"customizations": {
+	  "vscode": {
+		"settings": {
+			"jupyter.kernels.excludePythonEnvironments": ["/usr/bin/python3"],
+			"remote.portsAttributes": {
+				"ipykernel_launcher": {"onAutoForward": "ignore"}
+			}
+		},
+		"extensions": [
+		  "-dbaeumer.vscode-eslint",
+		  "ms-python.python",
+		  "ms-toolsai.jupyter",
+		  "streetsidesoftware.code-spell-checker"
+		]
+	  }
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "mkdir data && mkdir data/raw && mkdir data/interim && mkdir data/processed && mkdir models",
+	"postAttachCommand": "htop"
+}
