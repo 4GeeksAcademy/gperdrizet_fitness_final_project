@@ -153,8 +153,10 @@ def evaluate_datasets(
     return cross_val_results_df, tukey_result
 
 
-
-
+'''Collection of helper functions for notebooks.'''
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import GridSearchCV
 
 def plot_cross_validation(search_results:GridSearchCV) -> None:
     '''Takes result object from scikit-learn's GridSearchCV(),
