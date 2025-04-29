@@ -55,7 +55,7 @@ def plot_distribution(df, numerical_features, bins=30, add_kde=True):
 '''Apply One-Hot Encoding'''
 def encode_categorical(df):
     """Performs One-Hot Encoding on categorical features."""
-    categorical_features = ['Gender', 'Workout Type', 'Workout Intensity', 'Mood Before Workout', 'Mood After Workout']
+    categorical_features = ['Gender']
     
     df = pd.get_dummies(df, columns=categorical_features, drop_first=False)
     
@@ -72,37 +72,17 @@ def correlation_analysis(df):
     plt.title('Feature Correlation Matrix')
     plt.show()
 
-
-def compare_intensity_levels(df, intensity_features, numerical_feature):
-    
-    """Plots boxplots for multiple workout intensity categories."""
-    df_filtered = df[intensity_features + [numerical_feature]]
-
-    # Melt the DataFrame for better plotting
-    df_melted = df_filtered.melt(id_vars=[numerical_feature], var_name="Workout Intensity", value_name="Active")
-    
-    # Filter out non-active (zero values)
-    df_melted = df_melted[df_melted["Active"] == 1]
-
-    plt.figure(figsize=(10,6))
-    sns.boxplot(x=df_melted["Workout Intensity"], y=df_melted[numerical_feature])
-    plt.title(f'{numerical_feature} Across Workout Intensity Levels')
-    plt.xlabel("Workout Intensity")
-    plt.ylabel(numerical_feature)
-    plt.show()
-
-
 '''K-Means Clustering'''
 def cluster_users(df, num_clusters=3):
 
     """Clusters users based on workout efficiency metrics."""
-    X = df[['Age', 'Weight (kg)', 'Workout Duration (mins)', 'Calories Burned', 'Heart Rate (bpm)']]
+    X = df[['Age', 'Weight', 'Duration', 'Calories', 'Heart_Rate', 'Body_Temp']]
     kmeans = KMeans(n_clusters=num_clusters, random_state=42)
     df['Cluster'] = kmeans.fit_predict(X)
 
     """Plot Clusters"""
     plt.figure(figsize=(8,6))
-    sns.scatterplot(x=df['Calories Burned'], y=df['Workout Duration (mins)'], hue=df['Cluster'], palette='Set1')
+    sns.scatterplot(x=df['Calories'], y=df['Duration'], hue=df['Cluster'], palette='Set1')
     plt.title('User Clustering by Workout Efficiency')
     plt.show()
 
@@ -113,7 +93,7 @@ def cluster_users(df, num_clusters=3):
 def calculate_efficiency(df):
 
     """Computes workout efficiency based on calorie burn rate and heart rate."""
-    df['Efficiency_score'] = df['Calories Burned'] / df['Workout Duration (mins)'] * (df['Heart Rate (bpm)'] / 100)
+    df['Efficiency_score'] = df['Calories'] / df['Duration'] * (df['Heart_Rate'] / 100)
     return df
 
 
@@ -132,7 +112,7 @@ def plot_kde(df, numerical_features):
     plt.figure(figsize=(12, 6))
 
     for feature in numerical_features:
-        sns.kdeplot(df[feature], label=feature, shade=True)
+        sns.kdeplot(df[feature], label=feature, fill=True)
 
     plt.title("Feature Density Comparisons")
     plt.legend()
@@ -153,29 +133,6 @@ def plot_correlation_heatmap(df):
     sns.heatmap(df.corr(), annot=True, cmap="coolwarm", fmt=".2f")
     plt.title("Feature Correlation Heatmap")
     plt.show()
-
-def plot_efficiency_vs_intensity(df, intensity_features, efficiency_feature):
-    """Plots boxplots for efficiency across workout intensity levels."""
-    df_filtered = df[intensity_features + [efficiency_feature]]
-
-    # Melt for better visualization
-    df_melted = df_filtered.melt(id_vars=[efficiency_feature], var_name="Workout Intensity", value_name="Active")
-    df_melted = df_melted[df_melted["Active"] == 1]  # Remove inactive cases
-
-    # Plot efficiency distribution across intensity levels
-    plt.figure(figsize=(10,6))
-    sns.boxplot(x=df_melted["Workout Intensity"], y=df_melted[efficiency_feature])
-    plt.title(f"Efficiency Score Across Workout Intensity Levels")
-    plt.xlabel("Workout Intensity")
-    plt.ylabel("Efficiency Score")
-    plt.show()
-
-
-def intensity_efficiency_correlation(df, efficiency_feature):
-    """Finds correlation between workout intensity levels and efficiency."""
-    correlation_values = df[["Workout Intensity_Low", "Workout Intensity_Medium", "Workout Intensity_High", efficiency_feature]].corr()
-    return correlation_values[efficiency_feature].drop(efficiency_feature)
-
 
 def rank_feature_importance(df, target_feature):
     """Ranks features by their correlation strength with the target metric."""
