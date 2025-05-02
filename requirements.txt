@@ -6,3 +6,4 @@ matplotlib==3.10.1
 seaborn==0.13.2
 ipykernel==6.29.5
 pyarrow==19.0.1
+statsmodels==0.14.4
