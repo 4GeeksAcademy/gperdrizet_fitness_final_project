@@ -2,7 +2,7 @@ import pickle
 import pandas as pd
 import streamlit as st
 
-with open("../models/pipelines.pkl", "rb") as f:
+with open("./models/pipelines.pkl", "rb") as f:
     pipelines = pickle.load(f)
 
 # print(pipelines.keys())  # Shows all available keys in the dictionary
