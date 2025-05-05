@@ -2,7 +2,51 @@ import pickle
 import pandas as pd
 import streamlit as st
 
-with open("./models/pipelines.pkl", "rb") as f:
+st.markdown(
+    """
+    <style>
+    /* 🔹 Background Gradient */
+    .stApp {
+        background: linear-gradient(to bottom, #0F2027, #203A43, #2C5364);
+    }
+    
+    /* 🔹 Custom Styled Buttons */
+    .stButton>button {
+        background-color: #32CD32;
+        color: white;
+        font-size: 16px;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+    .stButton>button:hover {
+        background-color: #228B22;
+        transform: scale(1.05);
+    }
+    .stSuccess {
+        font-size: 18px;
+        font-weight: bold;
+        color: #1E90FF;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.image("static/features-bg.jpg",  use_container_width=True)
+
+# st.markdown(
+#     """
+#     <div style="position: relative; text-align: center;">
+#         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+#             font-size: 36px; color: white; background: rgba(0, 0, 0, 0.5); padding: 10px;">
+#             Track Your Fitness Smarter 💪🔥
+#         </div>
+#     </div>
+#     """,
+#     unsafe_allow_html=True
+# )
+
+with open("../models/pipelines.pkl", "rb") as f:
     pipelines = pickle.load(f)
 
 # print(pipelines.keys())  # Shows all available keys in the dictionary
@@ -11,7 +55,7 @@ with open("./models/pipelines.pkl", "rb") as f:
 
 # print(type(model))  # Should output <class 'sklearn.pipeline.Pipeline'>
 
-st.markdown("<h1 style='text-align: center; color: blue;'>Fitness Prediction App</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: #FFD700;'>Fitness Prediction App 🏋️‍♂️♂️</h1>", unsafe_allow_html=True)
 st.write("Enter details to predict fitness expenditure.")
 
 model_option = st.selectbox("Select how many calories you want to burn today, or How much time you have available to workout:", ["Calories to Burn", "Workout Duration"])
@@ -57,4 +101,4 @@ input_data = pd.DataFrame([user_input])
 
 if st.button("Predict"):
     prediction = model.predict(input_data)
-    st.success(f"Estimated {target_feature}:{prediction[0]:.2f}")
+    st.success(f"Estimated {target_feature}: {prediction[0]:.2f}")
