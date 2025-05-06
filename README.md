@@ -3,7 +3,7 @@
 
 <!-- Banner Image -->
 <div align="center" style="width: 100%; height: 100px; overflow: hidden;">
-  <img src="https://github.com/4GeeksAcademy/fitness_final_project_clements/blob/main/data/pexels-cottonbro-5319491.jpg" style="width: 100%; object-fit: cover;" alt="Fitness Prediction Project Banner">
+  <img src="https://github.com/4GeeksAcademy/fitness_final_project_clements/blob/5629a6f25c071cce841ef4e14c2f38e0d5df2adc/data/banner.png" style="width: 100%; object-fit: cover;" alt="Fitness Prediction Project Banner">
 </div>
 
 # Fitness Calorie & Duration Prediction
