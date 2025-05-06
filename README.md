@@ -1,5 +1,3 @@
-# Fitness
-![Workout Pic]()
 
 <!-- Banner Image -->
 <div align="center" style="width: 100%; height: 100px; overflow: hidden;">
@@ -26,16 +24,16 @@ Our final model uses **Gradient Boosting** (XGBoost) and achieves strong predict
 
 
 
-*Left: Actual vs Predicted Calories | Right: Actual vs Predicted Time*
+placeholders- *Left: Actual vs Predicted Calories | Right: Actual vs Predicted Time*
 
 
 ---
 
-## 🧰 Libraries & Technologies
+## Libraries & Technologies
 
 - `Python`
 - `pandas`, `numpy`
-- `scikit-learn`, `XGBoost`
+- `scikit-learn`, 'statsmodels'
 - `matplotlib`, `seaborn`
 - `Streamlit`
 - **Skills demonstrated:**
@@ -47,23 +45,28 @@ Our final model uses **Gradient Boosting** (XGBoost) and achieves strong predict
 
 ---
 
-## 👥 Contributors
-
-**Taylor Clements**  
- 
-[Github link](https://github.com/drtclem)
-
-**Mike Berrio**  
- 
-[Github link](https://github.com/mberrio10)
+## Links 
+- EDA notebook
+- Model Testing
+- Hyperparamter Tuning
+- Imputation
+- Pipeline
+- Deployment File (Streamlit)
 
 
+---
+
+##  Contributors
+
+**Taylor Clements**  [Github link](https://github.com/drtclem)
+
+**Mike Berrio**  [Github link](https://github.com/mberrio10)
 
 ---
 
 ## Acknowledgements
 
-This project was created as part of a learning experience for 4Geeks Academy
+This project was created as part of a learning experience for 4Geeks Academy. Much appreciation to 4Geeks for codespace hosting and access.
 Special thanks to **George Perdrizet** for providing mentorship support throughout the development of this project and all of the course. 
 
 ---
