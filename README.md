@@ -2,9 +2,9 @@
 ![Workout Pic]()
 
 <!-- Banner Image -->
-<p align="center">
-  <img src="https://github.com/4GeeksAcademy/fitness_final_project_clements/blob/main/data/pexels-cottonbro-5319491.jpg" width="100%" alt="Fitness Prediction Project Banner">
-</p>
+<div align="center" style="width: 100%; height: 200px; overflow: hidden;">
+  <img src="https://github.com/4GeeksAcademy/fitness_final_project_clements/blob/main/data/pexels-cottonbro-5319491.jpg" style="width: 100%; object-fit: cover;" alt="Fitness Prediction Project Banner">
+</div>
 
 # Fitness Calorie & Duration Prediction
 
